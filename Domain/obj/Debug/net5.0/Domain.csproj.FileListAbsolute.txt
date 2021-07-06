@@ -1,0 +1,15 @@
+/Users/aybarsacar/Desktop/cs/ReactivitiesV2/Domain/bin/Debug/net5.0/Domain.deps.json
+/Users/aybarsacar/Desktop/cs/ReactivitiesV2/Domain/bin/Debug/net5.0/Domain.dll
+/Users/aybarsacar/Desktop/cs/ReactivitiesV2/Domain/bin/Debug/net5.0/ref/Domain.dll
+/Users/aybarsacar/Desktop/cs/ReactivitiesV2/Domain/bin/Debug/net5.0/Domain.pdb
+/Users/aybarsacar/Desktop/cs/ReactivitiesV2/Domain/obj/Debug/net5.0/Domain.csprojAssemblyReference.cache
+/Users/aybarsacar/Desktop/cs/ReactivitiesV2/Domain/obj/Debug/net5.0/Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/aybarsacar/Desktop/cs/ReactivitiesV2/Domain/obj/Debug/net5.0/Domain.AssemblyInfoInputs.cache
+/Users/aybarsacar/Desktop/cs/ReactivitiesV2/Domain/obj/Debug/net5.0/Domain.AssemblyInfo.cs
+/Users/aybarsacar/Desktop/cs/ReactivitiesV2/Domain/obj/Debug/net5.0/Domain.csproj.CoreCompileInputs.cache
+/Users/aybarsacar/Desktop/cs/ReactivitiesV2/Domain/obj/Debug/net5.0/Domain.dll
+/Users/aybarsacar/Desktop/cs/ReactivitiesV2/Domain/obj/Debug/net5.0/ref/Domain.dll
+/Users/aybarsacar/Desktop/cs/ReactivitiesV2/Domain/obj/Debug/net5.0/Domain.pdb
+/Users/aybarsacar/Desktop/cs/ReactivitiesV2/Domain/bin/Debug/net5.0/Domain.runtimeconfig.json
+/Users/aybarsacar/Desktop/cs/ReactivitiesV2/Domain/bin/Debug/net5.0/Domain.runtimeconfig.dev.json
+/Users/aybarsacar/Desktop/cs/ReactivitiesV2/Domain/obj/Debug/net5.0/Domain.genruntimeconfig.cache
