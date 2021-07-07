@@ -15,6 +15,7 @@ import { useStore } from '../stores/store';
 import { useEffect } from 'react';
 import LoadingComponent from './LoadingComponent';
 import ModalContainer from '../common/modals/ModalContainer';
+import ProfilePage from '../../features/profiles/ProfilePage';
 
 function App() {
   // get the location so we can re-render the component as the route change
@@ -61,6 +62,12 @@ function App() {
                   exact
                   path="/activities/:id"
                   component={ActivityDetails}
+                />
+
+                <Route
+                  exact
+                  path="/profiles/:username"
+                  component={ProfilePage}
                 />
 
                 <Route exact path="/login" component={LoginForm} />
