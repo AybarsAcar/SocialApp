@@ -21,6 +21,6 @@ namespace Application.Activities
 
     public string HostUsername { get; set; }
     
-    public ICollection<Profile> Attendees { get; set; } // use this to avoid circular reference
+    public ICollection<AttendeeDto> Attendees { get; set; } // use this to avoid circular reference
   }
 }

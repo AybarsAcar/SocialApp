@@ -31,5 +31,17 @@ namespace API.Controllers
     {
       return HandleResult(await Mediator.Send(new Delete.Command {Id = id}));
     }
+
+    /// <summary>
+    /// Endpoint to set a main user profile photo
+    /// </summary>
+    /// <param name="id">id of hte photo</param>
+    /// <returns></returns>
+    [HttpPost("{id}/setMain")]
+    public async Task<IActionResult> SetMain(string id)
+    {
+      return HandleResult(await Mediator.Send(new SetMain.Command {Id = id}));
+    }
+      
   }
 }
