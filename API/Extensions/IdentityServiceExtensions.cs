@@ -1,8 +1,8 @@
 using System.Text;
+using System.Threading.Tasks;
 using API.Services;
 using Domain;
 using Infrastructure.Security;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -36,22 +36,34 @@ namespace API.Extensions
             ValidateIssuer = false,
             ValidateAudience = false
           };
+          // authentication for SignalR
+          opt.Events = new JwtBearerEvents
+          {
+            OnMessageReceived = context =>
+            {
+              var accessToken = context.Request.Query["access_token"]; // access_token sent by the client
+              var path = context.HttpContext.Request.Path;
+              if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/chat"))
+              {
+                context.Token = accessToken;
+              }
+
+              return Task.CompletedTask;
+            }
+          };
         });
-      
+
       // auth policy
       services.AddAuthorization(opt =>
       {
-        opt.AddPolicy("IsActivityHost", policy =>
-        {
-          policy.Requirements.Add(new IsHostRequirement());
-        });
+        opt.AddPolicy("IsActivityHost", policy => { policy.Requirements.Add(new IsHostRequirement()); });
       });
 
       // AddTransient - lasts as long as the method is running
       services.AddTransient<IAuthorizationHandler, IsHostRequirementHandler>();
 
       services.AddScoped<TokenService>();
-      
+
       return services;
     }
   }

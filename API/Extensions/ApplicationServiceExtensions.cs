@@ -40,6 +40,8 @@ namespace API.Extensions
       // config grabs from application.json file
       services.Configure<CloudinarySettings>(config.GetSection("Cloudinary"));
 
+      services.AddSignalR();
+
       return services;
     }
   }
