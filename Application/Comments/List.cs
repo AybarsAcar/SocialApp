@@ -37,12 +37,12 @@ namespace Application.Comments
       public async Task<Result<List<CommentDto>>> Handle(Query request, CancellationToken cancellationToken)
       {
         // get a list of comments for a particular activity
-        // order them by a particular date
+        // order them by a particular date descending to get the newest comment at the top
         // project them to comment dto
         // execute tolist
         var comments = await _context.Comments
           .Where(x => x.Activity.Id == request.ActivityId)
-          .OrderBy(x => x.CreatedAt)
+          .OrderByDescending(x => x.CreatedAt)
           .ProjectTo<CommentDto>(_mapper.ConfigurationProvider)
           .ToListAsync();
 

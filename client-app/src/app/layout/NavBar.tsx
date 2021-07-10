@@ -5,7 +5,7 @@ import { useStore } from '../stores/store';
 
 function NavBar() {
   const { userStore } = useStore();
-  const { isLoggedIn, login, logout, user } = userStore;
+  const { logout, user } = userStore;
 
   return (
     <Menu inverted fixed="top">
