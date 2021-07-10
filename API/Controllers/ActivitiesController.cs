@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Application.Activities;
+using Application.Core;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,10 @@ namespace API.Controllers
   public class ActivitiesController : BaseApiController
   {
     [HttpGet]
-    public async Task<IActionResult> GetActivities()
+    public async Task<IActionResult> GetActivities([FromQuery] PagingParams pagingParams)
     {
-      var result = await Mediator.Send(new List.Query());
-      return HandleResult(result);
+      var result = await Mediator.Send(new List.Query {Params = pagingParams});
+      return HandlePagedResult(result);
     }
 
     [HttpGet("{id}")]
@@ -29,7 +30,7 @@ namespace API.Controllers
       return HandleResult(await Mediator.Send(new Create.Command {Activity = activity}));
     }
 
-    [Authorize(Policy = "IsActivityHost")]  // add our custom Auth policy
+    [Authorize(Policy = "IsActivityHost")] // add our custom Auth policy
     [HttpPut("{id}")]
     public async Task<IActionResult> EditActivity(Guid id, Activity activity)
     {
@@ -38,7 +39,7 @@ namespace API.Controllers
       return HandleResult(await Mediator.Send(new Edit.Command {Activity = activity}));
     }
 
-    [Authorize(Policy = "IsActivityHost")]  // add our custom Auth policy
+    [Authorize(Policy = "IsActivityHost")] // add our custom Auth policy
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteActivity(Guid id)
     {
