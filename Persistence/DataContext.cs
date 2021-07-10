@@ -18,6 +18,9 @@ namespace Persistence
     public DbSet<Photo> Photos { get; set; }
 
     public DbSet<Comment> Comments { get; set; }
+
+    // the Join Table
+    public DbSet<UserFollowing> UserFollowings { get; set; }
     
     /// <summary>
     /// Set our many to many relationship
@@ -49,6 +52,23 @@ namespace Persistence
         .OnDelete(DeleteBehavior.Cascade);
       // Author Delete is Restrict
       // because we want to maintain the comments of the deleted users
+      
+      // configure the relationship in the join table
+      // for many to many follower / followee relationship
+      builder.Entity<UserFollowing>(b =>
+      {
+        b.HasKey(key => new {key.ObserverId, key.TargetId});
+
+        b.HasOne(o => o.Observer)
+          .WithMany(f => f.Followings)
+          .HasForeignKey(o => o.ObserverId)
+          .OnDelete(DeleteBehavior.Cascade);
+        
+        b.HasOne(o => o.Target)
+          .WithMany(f => f.Followers)
+          .HasForeignKey(o => o.TargetId)
+          .OnDelete(DeleteBehavior.Cascade);
+      });
     }
   }
 }

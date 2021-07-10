@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.Core;
 using Application.Interfaces;
-using Application.Profiles;
 using AutoMapper;
 using Domain;
 using FluentValidation;
