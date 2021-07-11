@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import { history } from '../..';
 import { Activity, ActivityFormValues } from '../models/activity';
 import { PaginatedResult } from '../models/pagination';
-import { Photo, Profile } from '../models/profile';
+import { Photo, Profile, UserActivity } from '../models/profile';
 import { User, UserFormValues } from '../models/user';
 import { store } from '../stores/store';
 
@@ -20,7 +20,7 @@ const sleep = (delay: number) => {
 };
 
 // set the default url that axios uses
-axios.defaults.baseURL = 'http://localhost:5000/api';
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 // inteceptor to send our token with requests
 axios.interceptors.request.use((config) => {
@@ -37,6 +37,11 @@ axios.interceptors.request.use((config) => {
 // delay all requests to the Server by 1 second
 axios.interceptors.response.use(
   async (response) => {
+    if (process.env.NODE_ENV === 'development') {
+      // add delay for testin in development
+      await sleep(1000);
+    }
+
     const pagination = response.headers['pagination'];
 
     if (pagination) {
@@ -48,7 +53,6 @@ axios.interceptors.response.use(
       return response as AxiosResponse<PaginatedResult<any>>;
     }
 
-    await sleep(1000);
     return response;
   },
   (error: AxiosError) => {
@@ -165,6 +169,11 @@ const Profiles = {
 
   listFollowings: (username: string, predicate: string) =>
     requests.get<Profile[]>(`/follow/${username}?predicate=${predicate}`),
+
+  listActivities: (username: string, predicate: string) =>
+    requests.get<UserActivity[]>(
+      `/profiles/${username}/activities?predicate=${predicate}`
+    ),
 };
 
 const agent = {

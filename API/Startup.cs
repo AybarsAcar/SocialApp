@@ -73,6 +73,11 @@ namespace API
       // app.UseHttpsRedirection();
 
       app.UseRouting();
+      
+      // Serving Static files from wwwroot folder
+      app.UseDefaultFiles();
+      app.UseStaticFiles();
+      // ends
 
       app.UseCors("CorsPolicy");
 
@@ -84,6 +89,8 @@ namespace API
       {
         endpoints.MapControllers(); // rest end points
         endpoints.MapHub<ChatHub>("/chat"); // signalR end point
+
+        endpoints.MapFallbackToController("Index", "Fallback");
       });
     }
   }

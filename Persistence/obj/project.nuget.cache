@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "nlP9k9G6VhOuWaHSluFNlwv5Mv5XkAFJfuvHm2l9qaaH2FKUYK9ri26Q3tQDi2JyguYRrdaQ7TBNSp8j0Zr5kA==",
+  "dgSpecHash": "HtCMG21hhjKdnL8kaNqfQkmVueiRIhpQQonJjV9Q3bYLd1DGc/OZePSGCz7DibeZIkVgzQDK5mz1e0fB3/jAHQ==",
   "success": true,
   "projectFilePath": "/Users/aybarsacar/Desktop/cs/ReactivitiesV2/Persistence/Persistence.csproj",
   "expectedPackageFiles": [
@@ -33,6 +33,8 @@
     "/Users/aybarsacar/.nuget/packages/microsoft.extensions.logging.abstractions/5.0.0/microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/microsoft.extensions.options/5.0.0/microsoft.extensions.options.5.0.0.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/microsoft.extensions.primitives/5.0.0/microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "/Users/aybarsacar/.nuget/packages/npgsql/5.0.4/npgsql.5.0.4.nupkg.sha512",
+    "/Users/aybarsacar/.nuget/packages/npgsql.entityframeworkcore.postgresql/5.0.5/npgsql.entityframeworkcore.postgresql.5.0.5.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/sqlitepclraw.bundle_e_sqlite3/2.0.4/sqlitepclraw.bundle_e_sqlite3.2.0.4.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/sqlitepclraw.core/2.0.4/sqlitepclraw.core.2.0.4.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/sqlitepclraw.lib.e_sqlite3/2.0.4/sqlitepclraw.lib.e_sqlite3.2.0.4.nupkg.sha512",
@@ -40,7 +42,8 @@
     "/Users/aybarsacar/.nuget/packages/system.collections.immutable/5.0.0/system.collections.immutable.5.0.0.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/system.componentmodel.annotations/5.0.0/system.componentmodel.annotations.5.0.0.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/system.diagnostics.diagnosticsource/5.0.1/system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",
-    "/Users/aybarsacar/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512"
+    "/Users/aybarsacar/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
+    "/Users/aybarsacar/.nuget/packages/system.runtime.compilerservices.unsafe/4.6.0/system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512"
   ],
   "logs": []
 }

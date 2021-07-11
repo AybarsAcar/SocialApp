@@ -16,6 +16,7 @@ import { useEffect } from 'react';
 import LoadingComponent from './LoadingComponent';
 import ModalContainer from '../common/modals/ModalContainer';
 import ProfilePage from '../../features/profiles/ProfilePage';
+import PrivateRoute from './PrivateRoute';
 
 function App() {
   // get the location so we can re-render the component as the route change
@@ -50,30 +51,32 @@ function App() {
             <NavBar />
             <Container style={{ marginTop: '7em' }}>
               <Switch>
-                <Route exact path="/activities" component={ActivityDashboard} />
-                <Route
+                <PrivateRoute
+                  exact
+                  path="/activities"
+                  component={ActivityDashboard}
+                />
+                <PrivateRoute
                   exact
                   key={location.key}
                   path={['/createActivity', '/manage/:id']}
                   component={ActivityForm}
                 />
 
-                <Route
+                <PrivateRoute
                   exact
                   path="/activities/:id"
                   component={ActivityDetails}
                 />
 
-                <Route
+                <PrivateRoute
                   exact
                   path="/profiles/:username"
                   component={ProfilePage}
                 />
 
-                <Route exact path="/login" component={LoginForm} />
-
+                {/* Remove the following routes in build */}
                 <Route exact path="/errors" component={TestErrors} />
-
                 <Route exact path="/server-error" component={ServerError} />
 
                 {/* NOT FOUND PAGE - This is a fallback page when the route is not found */}

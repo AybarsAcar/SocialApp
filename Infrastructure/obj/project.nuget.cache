@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "1Wu+kNR1hMZzNMgOmq/HhVr4mrFNj7DGHXiTsJrPeUr4B7Btffsbzw2wXm7GWHilrN1KR/m65Mj3aapm4SBe1Q==",
+  "dgSpecHash": "5v+ZBwESAd4vJzItsgMmFK51TEK0xhBonqp4KsDh2LRycMxbrtbNhACoy4tv0RpCEHR/8YNfPq2u5AasI+HQWA==",
   "success": true,
   "projectFilePath": "/Users/aybarsacar/Desktop/cs/ReactivitiesV2/Infrastructure/Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -41,6 +41,8 @@
     "/Users/aybarsacar/.nuget/packages/microsoft.extensions.primitives/5.0.0/microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/microsoft.extensions.webencoders/5.0.3/microsoft.extensions.webencoders.5.0.3.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512",
+    "/Users/aybarsacar/.nuget/packages/npgsql/5.0.4/npgsql.5.0.4.nupkg.sha512",
+    "/Users/aybarsacar/.nuget/packages/npgsql.entityframeworkcore.postgresql/5.0.5/npgsql.entityframeworkcore.postgresql.5.0.5.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/sqlitepclraw.bundle_e_sqlite3/2.0.4/sqlitepclraw.bundle_e_sqlite3.2.0.4.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/sqlitepclraw.core/2.0.4/sqlitepclraw.core.2.0.4.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/sqlitepclraw.lib.e_sqlite3/2.0.4/sqlitepclraw.lib.e_sqlite3.2.0.4.nupkg.sha512",
@@ -50,6 +52,7 @@
     "/Users/aybarsacar/.nuget/packages/system.diagnostics.diagnosticsource/5.0.1/system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/system.reflection.emit/4.7.0/system.reflection.emit.4.7.0.nupkg.sha512",
+    "/Users/aybarsacar/.nuget/packages/system.runtime.compilerservices.unsafe/4.6.0/system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/system.text.encodings.web/4.5.0/system.text.encodings.web.4.5.0.nupkg.sha512"
   ],
   "logs": []

@@ -10,10 +10,15 @@ namespace API.Controllers
 {
   public class ActivitiesController : BaseApiController
   {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="activityParams">activity params that inherits from PagingParams</param>
+    /// <returns></returns>
     [HttpGet]
-    public async Task<IActionResult> GetActivities([FromQuery] PagingParams pagingParams)
+    public async Task<IActionResult> GetActivities([FromQuery] ActivityParams activityParams)
     {
-      var result = await Mediator.Send(new List.Query {Params = pagingParams});
+      var result = await Mediator.Send(new List.Query {Params = activityParams});
       return HandlePagedResult(result);
     }
 
