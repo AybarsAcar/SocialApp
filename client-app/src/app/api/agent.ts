@@ -144,6 +144,10 @@ const Account = {
 
   register: (user: UserFormValues) =>
     requests.post<User>('/account/register', user),
+
+  // facebook login
+  fbLogin: (accessToken: string) =>
+    requests.post<User>(`/account/fbLogin?accessToken=${accessToken}`, {}),
 };
 
 // send request to Profiles endpoints
