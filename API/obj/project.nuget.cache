@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "z75lEv6LAbGhqTImkC5xuV0EoosDg+dhRSX2/5wgK5sKZZFFjSPCOuZWBZaKV7HY1FYn9AetZZWYnARKrKRfxw==",
+  "dgSpecHash": "eBNQ9sHFq27N9QckJOjdMgg0G9i3WPm5QxyWiW5hqhyCZPPS6qrU9pmqmL9YfPIuvwlG2ld534Rs7M30OD2zOg==",
   "success": true,
   "projectFilePath": "/Users/aybarsacar/Desktop/cs/ReactivitiesV2/API/API.csproj",
   "expectedPackageFiles": [
@@ -53,6 +53,8 @@
     "/Users/aybarsacar/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/npgsql/5.0.4/npgsql.5.0.4.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/npgsql.entityframeworkcore.postgresql/5.0.5/npgsql.entityframeworkcore.postgresql.5.0.5.nupkg.sha512",
+    "/Users/aybarsacar/.nuget/packages/nwebsec.aspnetcore.core/3.0.0/nwebsec.aspnetcore.core.3.0.0.nupkg.sha512",
+    "/Users/aybarsacar/.nuget/packages/nwebsec.aspnetcore.middleware/3.0.0/nwebsec.aspnetcore.middleware.3.0.0.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/sqlitepclraw.bundle_e_sqlite3/2.0.4/sqlitepclraw.bundle_e_sqlite3.2.0.4.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/sqlitepclraw.core/2.0.4/sqlitepclraw.core.2.0.4.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/sqlitepclraw.lib.e_sqlite3/2.0.4/sqlitepclraw.lib.e_sqlite3.2.0.4.nupkg.sha512",

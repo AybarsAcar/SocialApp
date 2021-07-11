@@ -45,11 +45,7 @@ namespace API
           var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
           opt.Filters.Add(new AuthorizeFilter(policy));
         })
-        
-        .AddFluentValidation(config =>
-      {
-        config.RegisterValidatorsFromAssemblyContaining<Create>();
-      });
+        .AddFluentValidation(config => { config.RegisterValidatorsFromAssemblyContaining<Create>(); });
 
       // our extensions specific to this application
       services.AddApplicationServices(_config);
@@ -61,7 +57,21 @@ namespace API
     {
       // instead of the developer exception page we will be using our own exception middleware
       app.UseMiddleware<ExceptionMiddleware>();
-      
+
+      // add security headers
+      app.UseXContentTypeOptions();
+      app.UseReferrerPolicy(opt => opt.NoReferrer());
+      app.UseXXssProtection(opt => opt.EnabledWithBlockMode());
+      app.UseXfo(opt => opt.Deny());
+      app.UseCsp(opt => opt
+        .BlockAllMixedContent()
+        .StyleSources(s => s.Self().CustomSources("https://fonts.googleapis.com"))
+        .FontSources(s => s.Self().CustomSources("https://fonts.gstatic.com", "data:"))
+        .FormActions(s => s.Self())
+        .FrameAncestors(s => s.Self())
+        .ImageSources(s => s.Self().CustomSources("https://res.cloudinary.com"))
+        .ScriptSources(s => s.Self().CustomSources("sha256-sP1Nh4NLLjzMqHUFFyxazroQUx3RmnLnSmYFIX98xaA=")));
+
       // check to see if in the developer mode
       if (env.IsDevelopment())
       {
@@ -69,11 +79,20 @@ namespace API
         app.UseSwagger();
         app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
       }
+      else
+      {
+        // add extra security for production
+        app.Use(async (context, next) =>
+        {
+          context.Response.Headers.Add("Strict-Transport-Security", "max-age=31536000");
+          await next.Invoke();
+        });
+      }
 
       // app.UseHttpsRedirection();
 
       app.UseRouting();
-      
+
       // Serving Static files from wwwroot folder
       app.UseDefaultFiles();
       app.UseStaticFiles();
@@ -82,7 +101,7 @@ namespace API
       app.UseCors("CorsPolicy");
 
       app.UseAuthentication();
-      
+
       app.UseAuthorization();
 
       app.UseEndpoints(endpoints =>

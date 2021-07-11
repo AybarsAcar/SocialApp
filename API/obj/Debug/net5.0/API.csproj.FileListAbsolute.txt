@@ -86,3 +86,5 @@
 /Users/aybarsacar/Desktop/cs/ReactivitiesV2/API/bin/Debug/net5.0/Newtonsoft.Json.dll
 /Users/aybarsacar/Desktop/cs/ReactivitiesV2/API/bin/Debug/net5.0/Npgsql.dll
 /Users/aybarsacar/Desktop/cs/ReactivitiesV2/API/bin/Debug/net5.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/Users/aybarsacar/Desktop/cs/ReactivitiesV2/API/bin/Debug/net5.0/NWebsec.AspNetCore.Core.dll
+/Users/aybarsacar/Desktop/cs/ReactivitiesV2/API/bin/Debug/net5.0/NWebsec.AspNetCore.Middleware.dll
