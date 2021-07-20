@@ -10,6 +10,8 @@ export default class UserStore {
   fbAccessToken: string | null = null;
   fbLoading = false;
 
+  refreshTokenTimeout: any;
+
   constructor() {
     makeAutoObservable(this);
   }
@@ -24,6 +26,8 @@ export default class UserStore {
 
       // set the token
       store.commonStore.setToken(user.token);
+
+      this.startRefreshTokenTimer(user);
 
       runInAction(() => {
         this.user = user;
@@ -47,9 +51,13 @@ export default class UserStore {
     try {
       const user = await agent.Account.current();
 
+      store.commonStore.setToken(user.token);
+
       runInAction(() => {
         this.user = user;
       });
+
+      this.startRefreshTokenTimer(user);
     } catch (error) {
       console.log(error);
     }
@@ -61,6 +69,8 @@ export default class UserStore {
 
       // set the token
       store.commonStore.setToken(user.token);
+
+      this.startRefreshTokenTimer(user);
 
       runInAction(() => {
         this.user = user;
@@ -102,6 +112,8 @@ export default class UserStore {
         .then((user) => {
           store.commonStore.setToken(user.token);
 
+          this.startRefreshTokenTimer(user);
+
           runInAction(() => {
             this.user = user;
             this.fbLoading = false;
@@ -128,4 +140,36 @@ export default class UserStore {
       );
     }
   };
+
+  /**
+   * this method is automatically called when the user token is about to expire
+   * so the user is logged in throughout their session without distruption
+   */
+  refreshToken = async () => {
+    this.stopRefreshTokenTimer();
+
+    try {
+      const user = await agent.Account.refreshToken();
+
+      runInAction(() => (this.user = user));
+
+      store.commonStore.setToken(user.token);
+
+      this.startRefreshTokenTimer(user);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  private startRefreshTokenTimer(user: User) {
+    const jwtToken = JSON.parse(atob(user.token.split('.')[1]));
+    const expires = new Date(jwtToken.exp * 1000);
+    const timeout = expires.getTime() - Date.now() - 60 * 1000; // 60 seconds before hte token expires
+
+    this.refreshTokenTimeout = setTimeout(this.refreshToken, timeout);
+  }
+
+  private stopRefreshTokenTimer() {
+    clearTimeout(this.refreshTokenTimeout);
+  }
 }

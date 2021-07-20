@@ -56,7 +56,7 @@ axios.interceptors.response.use(
     return response;
   },
   (error: AxiosError) => {
-    const { data, status, config } = error.response!;
+    const { data, status, config, headers } = error.response!;
 
     console.log(error.response);
 
@@ -88,7 +88,13 @@ axios.interceptors.response.use(
         break;
 
       case 401:
-        toast.error('Unauthorised');
+        if (
+          status === 401 &&
+          headers['www-authenticate'].startsWith('Bearer error="invalid_token"')
+        ) {
+          store.userStore.logout();
+          toast.error('Session expired, please login again');
+        }
         break;
 
       case 404:
@@ -148,6 +154,8 @@ const Account = {
   // facebook login
   fbLogin: (accessToken: string) =>
     requests.post<User>(`/account/fbLogin?accessToken=${accessToken}`, {}),
+
+  refreshToken: () => requests.post<User>('/account/refreshToken', {}),
 };
 
 // send request to Profiles endpoints

@@ -8,6 +8,7 @@ using API.DTOs;
 using API.Services;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +21,6 @@ namespace API.Controllers
   /// this is not a thin Controller layer
   /// It also includes our authentication logic in it as well unlike other controllers
   /// </summary>
-  [AllowAnonymous]
   [ApiController]
   [Route("/api/[controller]")]
   public class AccountController : ControllerBase
@@ -45,6 +45,7 @@ namespace API.Controllers
       };
     }
 
+    [AllowAnonymous]
     [HttpPost("login")]
     public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
     {
@@ -61,12 +62,15 @@ namespace API.Controllers
 
       if (result.Succeeded)
       {
+        await SetRefreshToken(user);
+        
         return CreateUserObject(user);
       }
 
       return Unauthorized();
     }
 
+    [AllowAnonymous]
     [HttpPost("register")]
     public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
     {
@@ -96,6 +100,8 @@ namespace API.Controllers
 
       if (result.Succeeded)
       {
+        await SetRefreshToken(user);
+        
         return CreateUserObject(user);
       }
 
@@ -109,6 +115,8 @@ namespace API.Controllers
       var user = await _userManager.Users.Include(p => p.Photos)
         .FirstOrDefaultAsync(x => x.Email == User.FindFirstValue(ClaimTypes.Email));
 
+      await SetRefreshToken(user);
+
       return CreateUserObject(user);
     }
 
@@ -117,6 +125,7 @@ namespace API.Controllers
     /// </summary>
     /// <param name="accessToken">access token is returned to our client from facebook</param>
     /// <returns></returns>
+    [AllowAnonymous]
     [HttpPost("fbLogin")]
     public async Task<ActionResult<UserDto>> FacebookLogin([FromQuery] string accessToken)
     {
@@ -166,7 +175,7 @@ namespace API.Controllers
           new Photo {Id = "fb_" + (string) fbInfo.id, Url = (string) fbInfo.picture.data.url, IsMain = true}
         }
       };
-      
+
       // save them to our db
       var result = await _userManager.CreateAsync(user);
 
@@ -175,7 +184,53 @@ namespace API.Controllers
         return BadRequest("Problem creating the user account");
       }
 
+      await SetRefreshToken(user);
+
       return CreateUserObject(user);
+    }
+
+    /// <summary>
+    /// Used to refresh users token
+    /// and sends back the UserDto to the client so it can be used
+    /// </summary>
+    /// <returns></returns>
+    [Authorize]
+    [HttpPost("refreshToken")]
+    public async Task<ActionResult<UserDto>> RefreshToken()
+    {
+      var refreshToken = Request.Cookies["refreshToken"];
+
+      var user = await _userManager.Users
+        .Include(r => r.RefreshTokens)
+        .Include(p => p.Photos)
+        .FirstOrDefaultAsync(x => x.UserName == User.FindFirstValue(ClaimTypes.Name));
+
+      if (user == null) return Unauthorized();
+
+      var oldToken = user.RefreshTokens.SingleOrDefault(x => x.Token == refreshToken);
+
+      if (oldToken != null && !oldToken.IsActive) return Unauthorized();
+      
+      if (oldToken != null) oldToken.Revoked = DateTime.UtcNow;
+
+      return CreateUserObject(user);
+    }
+
+    private async Task SetRefreshToken(AppUser user)
+    {
+      var refreshToken = _tokenService.GenerateRefreshToken();
+
+      user.RefreshTokens.Add(refreshToken);
+
+      await _userManager.UpdateAsync(user);
+
+      var cookieOptions = new CookieOptions
+      {
+        HttpOnly = true,
+        Expires = DateTimeOffset.UtcNow.AddDays(7),
+      };
+
+      Response.Cookies.Append("refreshToken", refreshToken.Token, cookieOptions);
     }
 
     /// <summary>
