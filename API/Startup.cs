@@ -63,14 +63,17 @@ namespace API
       app.UseReferrerPolicy(opt => opt.NoReferrer());
       app.UseXXssProtection(opt => opt.EnabledWithBlockMode());
       app.UseXfo(opt => opt.Deny());
-      app.UseCsp(opt => opt
+      app.UseCspReportOnly(opt => opt
         .BlockAllMixedContent()
-        .StyleSources(s => s.Self().CustomSources("https://fonts.googleapis.com"))
+        .StyleSources(s =>
+          s.Self().CustomSources("https://fonts.googleapis.com"))
         .FontSources(s => s.Self().CustomSources("https://fonts.gstatic.com", "data:"))
         .FormActions(s => s.Self())
         .FrameAncestors(s => s.Self())
-        .ImageSources(s => s.Self().CustomSources("https://res.cloudinary.com"))
-        .ScriptSources(s => s.Self().CustomSources("sha256-sP1Nh4NLLjzMqHUFFyxazroQUx3RmnLnSmYFIX98xaA=")));
+        .ImageSources(s => s.Self().CustomSources("https://res.cloudinary.com", "https://www.facebook.com"))
+        .ScriptSources(s => s.Self()
+          .CustomSources("sha256-sP1Nh4NLLjzMqHUFFyxazroQUx3RmnLnSmYFIX98xaA=", "https://connect.facebook.net",
+            "sha256-MCcr8tSexkJ62IYb6uYhtYVWPEIWTk91nNjq5gpv7R8=")));
 
       // check to see if in the developer mode
       if (env.IsDevelopment())
