@@ -66,11 +66,12 @@ namespace API
       app.UseCspReportOnly(opt => opt
         .BlockAllMixedContent()
         .StyleSources(s =>
-          s.Self().CustomSources("https://fonts.googleapis.com"))
+          s.Self().CustomSources("https://fonts.googleapis.com", "sha256-oFySg82XYSNiSd+Q3yfYPD/rxY6RMDMJ0KxzGG74iGM="))
         .FontSources(s => s.Self().CustomSources("https://fonts.gstatic.com", "data:"))
         .FormActions(s => s.Self())
         .FrameAncestors(s => s.Self())
-        .ImageSources(s => s.Self().CustomSources("https://res.cloudinary.com", "https://www.facebook.com"))
+        .ImageSources(s => s.Self().CustomSources("https://res.cloudinary.com", "https://www.facebook.com",
+          "https://scontent-syd2-1.xx.fbcdn.net"))
         .ScriptSources(s => s.Self()
           .CustomSources("sha256-sP1Nh4NLLjzMqHUFFyxazroQUx3RmnLnSmYFIX98xaA=", "https://connect.facebook.net",
             "sha256-MCcr8tSexkJ62IYb6uYhtYVWPEIWTk91nNjq5gpv7R8=")));
