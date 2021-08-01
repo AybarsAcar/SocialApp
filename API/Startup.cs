@@ -71,7 +71,7 @@ namespace API
         .FormActions(s => s.Self())
         .FrameAncestors(s => s.Self())
         .ImageSources(s => s.Self().CustomSources("https://res.cloudinary.com", "https://www.facebook.com",
-          "https://scontent-syd2-1.xx.fbcdn.net"))
+          "https://scontent-syd2-1.xx.fbcdn.net", "data:"))
         .ScriptSources(s => s.Self()
           .CustomSources("sha256-sP1Nh4NLLjzMqHUFFyxazroQUx3RmnLnSmYFIX98xaA=", "https://connect.facebook.net",
             "sha256-MCcr8tSexkJ62IYb6uYhtYVWPEIWTk91nNjq5gpv7R8=")));
