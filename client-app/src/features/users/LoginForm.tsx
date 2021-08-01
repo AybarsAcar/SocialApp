@@ -11,7 +11,9 @@ function LoginForm() {
     <Formik
       initialValues={{ email: '', password: '', error: '' }}
       onSubmit={(values, { setErrors }) =>
-        userStore.login(values).catch((error) => setErrors({ error: 'error' }))
+        userStore
+          .login(values)
+          .catch((error) => setErrors({ error: error.response.data }))
       }
     >
       {({ handleSubmit, isSubmitting, errors }) => (

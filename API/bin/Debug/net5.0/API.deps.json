@@ -886,6 +886,21 @@
           "lib/netcoreapp3.1/NWebsec.AspNetCore.Middleware.dll": {}
         }
       },
+      "SendGrid/9.24.1": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3",
+          "starkbank-ecdsa": "1.3.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SendGrid.dll": {
+            "assemblyVersion": "9.24.1.0",
+            "fileVersion": "9.24.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/SendGrid.dll": {}
+        }
+      },
       "SQLitePCLRaw.bundle_e_sqlite3/2.0.4": {
         "dependencies": {
           "SQLitePCLRaw.core": "2.0.4",
@@ -1002,6 +1017,17 @@
         },
         "compile": {
           "lib/netstandard2.0/SQLitePCLRaw.provider.dynamic_cdecl.dll": {}
+        }
+      },
+      "starkbank-ecdsa/1.3.1": {
+        "runtime": {
+          "lib/netstandard2.1/StarkbankEcdsa.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.1/StarkbankEcdsa.dll": {}
         }
       },
       "Swashbuckle.AspNetCore/5.6.3": {
@@ -1122,7 +1148,8 @@
       "Infrastructure/1.0.0": {
         "dependencies": {
           "Application": "1.0.0",
-          "CloudinaryDotNet": "1.15.2"
+          "CloudinaryDotNet": "1.15.2",
+          "SendGrid": "9.24.1"
         },
         "runtime": {
           "Infrastructure.dll": {}
@@ -3167,6 +3194,13 @@
       "path": "nwebsec.aspnetcore.middleware/3.0.0",
       "hashPath": "nwebsec.aspnetcore.middleware.3.0.0.nupkg.sha512"
     },
+    "SendGrid/9.24.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-381S6vABlaA12T7MeoaqErx4kHlX/d/rvOJPxjWYePCPEFfP2rmmWfGd51KEkjKMHIBGNxzgUV+DnI9LWJT3aA==",
+      "path": "sendgrid/9.24.1",
+      "hashPath": "sendgrid.9.24.1.nupkg.sha512"
+    },
     "SQLitePCLRaw.bundle_e_sqlite3/2.0.4": {
       "type": "package",
       "serviceable": true,
@@ -3194,6 +3228,13 @@
       "sha512": "sha512-AY6+vv/4ji1mCkLrS6HP/88rHT9YFKRyg3LUj8RyIk6imJMUFdQDiP8rK8gq0a/0FbqspLjK1t7rtKcr7FXRYA==",
       "path": "sqlitepclraw.provider.dynamic_cdecl/2.0.4",
       "hashPath": "sqlitepclraw.provider.dynamic_cdecl.2.0.4.nupkg.sha512"
+    },
+    "starkbank-ecdsa/1.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YV20cpN7WgEiaIuIv8ZQPgkDVximP6gHCMCTgy6+IwArDHmuDVQLJ15Qwwmgd5woETnogquD+gu4SXDZW/ffog==",
+      "path": "starkbank-ecdsa/1.3.1",
+      "hashPath": "starkbank-ecdsa.1.3.1.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/5.6.3": {
       "type": "package",

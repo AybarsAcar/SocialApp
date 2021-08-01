@@ -16,6 +16,8 @@ import LoadingComponent from './LoadingComponent';
 import ModalContainer from '../common/modals/ModalContainer';
 import ProfilePage from '../../features/profiles/ProfilePage';
 import PrivateRoute from './PrivateRoute';
+import RegisterSuccess from '../../features/users/RegisterSuccess';
+import ConfirmEmail from '../../features/users/ConfirmEmail';
 
 function App() {
   // get the location so we can re-render the component as the route change
@@ -73,6 +75,18 @@ function App() {
                   exact
                   path="/profiles/:username"
                   component={ProfilePage}
+                />
+
+                <Route
+                  exact
+                  path="/account/registerSuccess"
+                  component={RegisterSuccess}
+                />
+
+                <Route
+                  exact
+                  path="/account/verifyEmail"
+                  component={ConfirmEmail}
                 />
 
                 {/* Remove the following routes in build */}

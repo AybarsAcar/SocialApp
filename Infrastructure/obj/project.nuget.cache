@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5v+ZBwESAd4vJzItsgMmFK51TEK0xhBonqp4KsDh2LRycMxbrtbNhACoy4tv0RpCEHR/8YNfPq2u5AasI+HQWA==",
+  "dgSpecHash": "vVlGmcoFTBRHOdktDvfe7hC74i8Xznt3TRUmrAOsPsPTRETz6ozAKeU5abFNNvN4HzxieLcXey3OFT9xgHUpyw==",
   "success": true,
   "projectFilePath": "/Users/aybarsacar/Desktop/cs/ReactivitiesV2/Infrastructure/Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -43,10 +43,12 @@
     "/Users/aybarsacar/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/npgsql/5.0.4/npgsql.5.0.4.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/npgsql.entityframeworkcore.postgresql/5.0.5/npgsql.entityframeworkcore.postgresql.5.0.5.nupkg.sha512",
+    "/Users/aybarsacar/.nuget/packages/sendgrid/9.24.1/sendgrid.9.24.1.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/sqlitepclraw.bundle_e_sqlite3/2.0.4/sqlitepclraw.bundle_e_sqlite3.2.0.4.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/sqlitepclraw.core/2.0.4/sqlitepclraw.core.2.0.4.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/sqlitepclraw.lib.e_sqlite3/2.0.4/sqlitepclraw.lib.e_sqlite3.2.0.4.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/sqlitepclraw.provider.dynamic_cdecl/2.0.4/sqlitepclraw.provider.dynamic_cdecl.2.0.4.nupkg.sha512",
+    "/Users/aybarsacar/.nuget/packages/starkbank-ecdsa/1.3.1/starkbank-ecdsa.1.3.1.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/system.collections.immutable/5.0.0/system.collections.immutable.5.0.0.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/system.componentmodel.annotations/5.0.0/system.componentmodel.annotations.5.0.0.nupkg.sha512",
     "/Users/aybarsacar/.nuget/packages/system.diagnostics.diagnosticsource/5.0.1/system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",

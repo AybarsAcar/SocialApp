@@ -20,8 +20,8 @@ namespace API.Services
     }
 
     public string CreateToken(AppUser user)
-    
-    
+
+
     {
       // add as many claims as you mind
       // whatever you want to track
@@ -51,7 +51,7 @@ namespace API.Services
 
       return tokenHandler.WriteToken(token); // this method returns an actual JWT token
     }
-    
+
     public RefreshToken GenerateRefreshToken()
     {
       var randomNumber = new byte[32];
